@@ -1,5 +1,5 @@
--- NOT YET DONE PROJECT --
-UMF is Universal Monitor Format.
-It is JSON representation of ACM ICPC monitor.
-Here you can find tool for converting UMF to HTML representation.
+-- NOT YET DONE PROJECT --<br/>
+UMF is Universal Monitor Format.<br/>
+It is JSON representation of ACM ICPC monitor.<br/>
+Here you can find tool for converting UMF to HTML representation.<br/>
 Also some examples of parsers from web monitor to UMF are presented.
