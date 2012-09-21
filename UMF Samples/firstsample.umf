@@ -1,0 +1,56 @@
+﻿{
+	"name" : "Sample contest",
+	"place" : "Yekaterinburg",
+	"year" : 2012,
+	"month" : 10,
+	"problemsCount" : 14,
+	"problemNames" : [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N" ],
+	"link" : "acm.usu.ru",
+	"standing" : 
+	[
+		{
+			"name" : "First place team ( FPT )",
+			"players" : [ "Ivanov Ivan", "Botaniq", "Rom Rom Rom" ],
+			"school" : "Ural State University",
+			"schoolShort" : "USU",
+			"totalTime" : 1326,
+			"solving" :
+			[
+				{
+					"problemNumber" : 1,
+					"attempts" : 1,
+					"accepted" : 1,
+					"time" : "13:26"
+				},
+				{
+					"problemNumber" : 5,
+					"attempts" : 20,
+					"accepted" : 0,
+					"time" : "26:13"
+				}
+			],
+		},
+		{
+			"name" : "Second place team ( SPT )",
+			"players" : [ "Simple Bot" ],
+			"school" : "Bot's academy",
+			"schoolShort" : "BA",
+			"totalTime" : 0,
+			"solving" :
+			[
+				{
+					"problemNumber" : 1,
+					"attempts" : 100,
+					"accepted" : 0,
+					"time" : "14:14"
+				},
+				{
+					"problemNumber" : 2,
+					"attempts" : 20,
+					"accepted" : 0,
+					"time" : "100:00"
+				}
+			],
+		}
+	]
+}
