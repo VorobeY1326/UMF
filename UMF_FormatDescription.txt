@@ -1,0 +1,45 @@
+UMF is JSON file, describing one ACM ICPC monitor.
+
+UMF is object with required and non-required fields.
+
+Required fields are:
+	"name" - Contest's name ( string )
+	"standing" - Resulting standing ( array of TeamResult )
+
+Optional fields are:
+	"place" - Where contest was held ( string )
+	"year" - Event's year ( number )
+	"month" - Event's month ( number from 1 to 12 )
+	"problemsCount" - Number of problems ( number )
+	"problemsNames" - Names of problems ( array of strings )
+	"link" - link to contest's web site ( string )
+
+Any other optional fields are not prohibited.
+
+TeamResult ( TR ) is an object describing one row of resulting monitor.
+
+Required fields of TR are:
+	"name" - Team's name ( string )
+	"solving" - Problems solving by current team ( array of ProblemResult )
+
+Optional fields of TR are:
+	"players" - Participants names ( array of strings )
+	"school" - Team's school ( string )
+	"schoolShort" - Short representation of "school" ( string )
+	"totalTime" - Total solving time ( number )
+
+Any other optional fields are not prohibited.
+
+ProblemResult ( PR ) is an object decribing problem solving by some team.
+
+Required fields of PR are:
+	"accepted" - Has team AC? ( number from 0 to 1 )
+	"problemNumber" - Problem number in current contest ( number from 1 to .. )
+
+Optional fields of PR are:
+	"attempts" - Number of attempts ( number )
+	"time" - Last submit time ( string, format: "HH:MM" )
+
+Any other optional fields are not prohibited.
+
+An example of UMFs you can find in folder "UMF Samples".
