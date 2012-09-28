@@ -1,54 +1,54 @@
 ﻿{
-	"name" : "Sample contest",
-	"place" : "Yekaterinburg",
-	"year" : 2012,
-	"month" : 10,
-	"problemsCount" : 14,
-	"problemsNames" : [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N" ],
-	"link" : "acm.usu.ru",
-	"standing" : 
+	"contestName" : "Sample contest",
+	"contestPlace" : "Yekaterinburg",
+	"contestYear" : 2012,
+	"contestMonth" : 10,
+	"contestProblemsCount" : 14,
+	"contestProblemsNames" : [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N" ],
+	"contestLink" : "acm.usu.ru",
+	"contestStanding" : 
 	[
 		{
-			"name" : "First place team ( FPT )",
-			"players" : [ "Ivanov Ivan", "Botaniq", "Rom Rom Rom" ],
-			"school" : "Ural State University",
-			"schoolShort" : "USU",
-			"totalTime" : 1326,
-			"solving" :
+			"teamName" : "First place team ( FPT )",
+			"teamPlayers" : [ "Ivanov Ivan", "Botaniq", "Rom Rom Rom" ],
+			"teamSchool" : "Ural State University",
+			"teamSchoolShort" : "USU",
+			"teamTotalTime" : 1326,
+			"teamSolving" :
 			[
 				{
 					"problemNumber" : 1,
-					"attempts" : 1,
-					"accepted" : 1,
-					"time" : "13:26"
+					"problemAttempts" : 1,
+					"problemAccepted" : 1,
+					"problemTime" : "13:26"
 				},
 				{
 					"problemNumber" : 5,
-					"attempts" : 20,
-					"accepted" : 0,
-					"time" : "26:13"
+					"problemAttempts" : 20,
+					"problemAccepted" : 0,
+					"problemTime" : "26:13"
 				}
 			],
 		},
 		{
-			"name" : "Second place team ( SPT )",
-			"players" : [ "Simple Bot" ],
-			"school" : "Bot's academy",
-			"schoolShort" : "BA",
-			"totalTime" : 0,
-			"solving" :
+			"teamName" : "Second place team ( SPT )",
+			"teamPlayers" : [ "Simple Bot" ],
+			"teamSchool" : "Bot's academy",
+			"teamSchoolShort" : "BA",
+			"teamTotalTime" : 0,
+			"teamSolving" :
 			[
 				{
 					"problemNumber" : 1,
-					"attempts" : 100,
-					"accepted" : 0,
-					"time" : "14:14"
+					"problemAttempts" : 100,
+					"problemAccepted" : 0,
+					"problemTime" : "14:14"
 				},
 				{
 					"problemNumber" : 2,
-					"attempts" : 20,
-					"accepted" : 0,
-					"time" : "100:00"
+					"problemAttempts" : 20,
+					"problemAccepted" : 0,
+					"problemTime" : "100:00"
 				}
 			],
 		}
