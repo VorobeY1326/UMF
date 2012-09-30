@@ -1,0 +1,28 @@
+{
+	"contestName" : "sample",
+	"contestPlace" : "place",
+	"contestYear" : 2012,
+	"contestMonth" : 1,
+	"contestProblemsCount" : 2,
+	"contestProblemsNames" : ["A", "B"],
+	"contestLink" : "link",
+	"contestStanding" :
+	[
+		{
+			"teamName" : "first",
+			"teamPlayers" : ["player0", "player1"],
+			"teamSchool" : "school",
+			"teamSchoolShort" : "S",
+			"teamTotalTime" : 1000,
+			"teamSolving" :
+			[
+				{
+					"problemNumber" : 1,
+					"problemAccepted" : 1,
+					"problemAttempts" : 2,
+					"problemTime" : "10:00"
+				}
+			]
+		}
+	]
+}

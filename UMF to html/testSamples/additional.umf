@@ -1,0 +1,19 @@
+{
+	"contestName" : "sample",
+	"contestSecret" : "secret",
+	"contestStanding" :
+	[
+		{
+			"teamName" : "first",
+			"teamMystery" : "mystery",
+			"teamSolving" :
+			[
+				{
+					"problemNumber" : 1,
+					"problemAccepted" : 1,
+					"problemInt" : 1326,
+				}
+			]
+		}
+	]
+}

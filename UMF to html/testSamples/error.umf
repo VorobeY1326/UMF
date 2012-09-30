@@ -1,0 +1,15 @@
+{
+	"contestName" : "sample",
+	"contestStanding" :
+	[
+		{
+			"teamName" : "first",
+			"teamSolving" :
+			[
+				{
+					"problemNumber" : 1
+				}
+			]
+		}
+	]
+}

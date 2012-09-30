@@ -1,12 +1,13 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using UMF.Tokens;
 
 namespace UMF
 {
-    internal class Program
+    public class Program
     {
-        private static void Main()
+        public static void Main()
         {
             var monitor = new AcmMonitor(JObject.Parse(File.ReadAllText("firstsample.umf")));
             Console.WriteLine(monitor.ContestName);
@@ -39,6 +40,11 @@ namespace UMF
                     Console.WriteLine(">");
                 }
             }
+            Console.WriteLine("--");
+            const string smth = "Vary good! Very good? Oh, of course..";
+            int offset = 0;
+            var ans = (new StringWithoutCharsToken()).Parse(smth, ref offset);
+            Console.WriteLine(ans);
         }
     }
 }

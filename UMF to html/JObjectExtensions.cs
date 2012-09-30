@@ -10,8 +10,23 @@ namespace UMF
             foreach (var field in requiredFields)
             {
                 if (jObject[field] == null)
-                    throw new Exception(String.Format("'{0}' required field is missing", field));
+                    throw new RequiredFieldNotFoundException(field);
             }
+        }
+    }
+
+    public class RequiredFieldNotFoundException : Exception
+    {
+        private readonly string field;
+
+        public RequiredFieldNotFoundException(string field)
+        {
+            this.field = field;
+        }
+
+        public override string ToString()
+        {
+            return field;
         }
     }
 }

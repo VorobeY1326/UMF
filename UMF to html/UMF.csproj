@@ -38,6 +38,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.6.1.12217, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,9 +49,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcmMonitor.cs" />
+    <Compile Include="AcmMonitorTests.cs" />
+    <Compile Include="Tokens\AndToken.cs" />
+    <Compile Include="Tokens\AnySymbolExceptToken.cs" />
+    <Compile Include="Tokens\ConstantToken.cs" />
+    <Compile Include="Tokens\EmptyToken.cs" />
+    <Compile Include="Tokens\IToken.cs" />
     <Compile Include="JObjectExtensions.cs" />
+    <Compile Include="Tokens\LetterToken.cs" />
+    <Compile Include="Tokens\DigitToken.cs" />
+    <Compile Include="Tokens\ManyToken.cs" />
+    <Compile Include="Tokens\NumberToken.cs" />
+    <Compile Include="Tokens\OrToken.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tokens\StringWithoutCharsToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
