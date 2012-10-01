@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace UMF
 {
@@ -29,20 +28,16 @@ namespace UMF
             Type = VariableType.Integer;
         }
 
-        public Variable(JToken token)
+        public static Variable CreateVariable(JToken token)
         {
             switch (token.Type)
             {
                 case JTokenType.String:
-                    Value = (string) token;
-                    Type = VariableType.String;
-                    break;
+                    return new Variable((string) token);
                 case JTokenType.Integer:
-                    Value = (int) token;
-                    Type = VariableType.Integer;
-                    break;
+                    return new Variable((int) token);
                 default:
-                    throw new Exception(String.Format("JTokenType {0} isn't convertable to Variable", token.Type));
+                    return null;
             }
         }
 

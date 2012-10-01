@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace UMF
 {
@@ -40,7 +41,7 @@ namespace UMF
             // global level
             var globalVariable = monitor.MonitorJson[name];
             if (globalVariable != null)
-                result = new Variable(globalVariable);
+                result = Variable.CreateVariable(globalVariable);
             if (additionalVariableGenerator != null)
             {
                 var additionalGlobalVariable = additionalVariableGenerator(monitor, new ParsingContext(null, null));
@@ -52,7 +53,7 @@ namespace UMF
             {
                 var teamLevelVariable = monitor.ContestStanding[context.TeamNumber.Value].TeamResultJson[name];
                 if (teamLevelVariable != null)
-                    result = new Variable(teamLevelVariable);
+                    result = Variable.CreateVariable(teamLevelVariable);
                 if (additionalVariableGenerator != null)
                 {
                     var additionalTeamLevelVariable = additionalVariableGenerator(monitor, new ParsingContext(context.TeamNumber, null));
@@ -78,7 +79,7 @@ namespace UMF
                 {
                     var ptLevelVariable = problemResult.ProblemResultJson[name];
                     if (ptLevelVariable != null)
-                        result = new Variable(ptLevelVariable);
+                        result = Variable.CreateVariable(ptLevelVariable);
                 }
                 if (additionalVariableGenerator != null)
                 {
@@ -104,7 +105,74 @@ namespace UMF
                                     return null;
                                 return new Variable(monitor.ContestProblemsNames[context.ProblemNumber.Value]);
                             }
-                    } //TODO море
+                    },
+                    {
+                        "problemTeamsTried",
+                            (monitor, context) =>
+                            {
+                                if (context.ProblemNumber == null || monitor.ContestStanding == null)
+                                    return null;
+                                int teamsTried = monitor.ContestStanding.Select(
+                                    teamResult => teamResult.TeamSolving.FirstOrDefault(p => p.ProblemNumber == context.ProblemNumber)
+                                    ).Count(problem => problem != null);
+                                return new Variable(teamsTried);
+                            }
+                    },
+                    {
+                        "problemTeamsAccepted",
+                        (monitor, context) =>
+                            {
+                                if (context.ProblemNumber == null || monitor.ContestStanding == null)
+                                    return null;
+                                int teamsAccepted = monitor.ContestStanding.Select(
+                                    teamResult => teamResult.TeamSolving.FirstOrDefault(p => p.ProblemNumber == context.ProblemNumber)
+                                    ).Count(problem => problem != null && problem.ProblemAccepted);
+                                return new Variable(teamsAccepted);
+                            }
+                    },
+                    {
+                        "problemTotalAttempts",
+                        (monitor, context) =>
+                            {
+                                if (context.ProblemNumber == null || monitor.ContestStanding == null)
+                                    return null;
+                                int totalAttempts = 0;
+                                foreach (var teamResult in monitor.ContestStanding)
+                                {
+                                    var problem = teamResult.TeamSolving.FirstOrDefault(p => p.ProblemNumber == context.ProblemNumber);
+                                    if (problem == null)
+                                        continue;
+                                    var attempts = problem.ProblemResultJson["problemAttempts"];
+                                    if (attempts != null && attempts.Type == JTokenType.Integer)
+                                        totalAttempts += (int) attempts;
+                                }
+                                return new Variable(totalAttempts);
+                            }
+                    },
+                    {
+                        "problemAcceptedAttempts",
+                        (monitor, context) =>
+                            {
+                                if (context.ProblemNumber == null || monitor.ContestStanding == null)
+                                    return null;
+                                int attemptsAccepted = monitor.ContestStanding.Select(
+                                    teamResult => teamResult.TeamSolving.FirstOrDefault(p => p.ProblemNumber == context.ProblemNumber)
+                                    ).Count(problem => problem != null && problem.ProblemAccepted);
+                                return new Variable(attemptsAccepted);
+                            }
+                    },
+                    {
+                        "teamPlayers",
+                        (monitor, context) =>
+                            {
+                                if (context.TeamNumber == null || monitor.ContestStanding == null)
+                                    return null;
+                                var players = monitor.ContestStanding[context.TeamNumber.Value].TeamPlayers;
+                                if (players == null)
+                                    return null;
+                                return new Variable(string.Join(", ", players));
+                            }
+                    }//TODO море
                 };
     }
 }
