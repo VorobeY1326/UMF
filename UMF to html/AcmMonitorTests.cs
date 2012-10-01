@@ -24,27 +24,27 @@ namespace UMF
         {
             var monitor = new AcmMonitor(JObject.Parse(File.ReadAllText("../../testSamples/full.umf")));
             Assert.AreEqual("sample", monitor.ContestName);
-            Assert.AreEqual("place", monitor.ContestPlace);
-            Assert.AreEqual(2012, monitor.ContestYear);
-            Assert.AreEqual(1, monitor.ContestMonth);
-            Assert.AreEqual(2, monitor.ContestProblemsCount);
+            Assert.AreEqual("place", (string) monitor.MonitorJson["contestPlace"]);
+            Assert.AreEqual(2012, (int) monitor.MonitorJson["contestYear"]);
+            Assert.AreEqual(1, (int)monitor.MonitorJson["contestMonth"]);
+            Assert.AreEqual(2, (int) monitor.MonitorJson["contestProblemsCount"]);
             Assert.AreEqual(2, monitor.ContestProblemsNames.Count);
             Assert.AreEqual("A", monitor.ContestProblemsNames[0]);
             Assert.AreEqual("B", monitor.ContestProblemsNames[1]);
-            Assert.AreEqual("link", monitor.ContestLink);
+            Assert.AreEqual("link", (string) monitor.MonitorJson["contestLink"]);
             Assert.AreEqual(1, monitor.ContestStanding.Count);
             Assert.AreEqual("first", monitor.ContestStanding[0].TeamName);
-            Assert.AreEqual("school", monitor.ContestStanding[0].TeamSchool);
-            Assert.AreEqual("S", monitor.ContestStanding[0].TeamSchoolShort);
-            Assert.AreEqual(1000, monitor.ContestStanding[0].TeamTotalTime);
+            Assert.AreEqual("school", (string) monitor.ContestStanding[0].TeamResultJson["teamSchool"]);
+            Assert.AreEqual("S", (string) monitor.ContestStanding[0].TeamResultJson["teamSchoolShort"]);
+            Assert.AreEqual(1000, (int) monitor.ContestStanding[0].TeamResultJson["teamTotalTime"]);
             Assert.AreEqual(2, monitor.ContestStanding[0].TeamPlayers.Count);
             Assert.AreEqual("player0", monitor.ContestStanding[0].TeamPlayers[0]);
             Assert.AreEqual("player1", monitor.ContestStanding[0].TeamPlayers[1]);
             Assert.AreEqual(1, monitor.ContestStanding[0].TeamSolving.Count);
             Assert.AreEqual(true, monitor.ContestStanding[0].TeamSolving[0].ProblemAccepted);
             Assert.AreEqual(1, monitor.ContestStanding[0].TeamSolving[0].ProblemNumber);
-            Assert.AreEqual(2, monitor.ContestStanding[0].TeamSolving[0].ProblemAttempts);
-            Assert.AreEqual("10:00", monitor.ContestStanding[0].TeamSolving[0].ProblemTime);
+            Assert.AreEqual(2, (int) monitor.ContestStanding[0].TeamSolving[0].ProblemResultJson["problemAttempts"]);
+            Assert.AreEqual("10:00", (string) monitor.ContestStanding[0].TeamSolving[0].ProblemResultJson["problemTime"]);
         }
 
         [Test]

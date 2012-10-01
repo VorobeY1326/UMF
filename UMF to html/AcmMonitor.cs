@@ -20,39 +20,14 @@ namespace UMF
             set { MonitorJson["contestName"] = value; }
         }
 
-        public string ContestPlace
-        {
-            get { return (string) MonitorJson["contestPlace"]; }
-            set { MonitorJson["contestPlace"] = value; }
-        }
-
-        public int ContestYear
-        {
-            get { return (int) MonitorJson["contestYear"]; }
-            set { MonitorJson["contestYear"] = value; }
-        }
-
-        public int ContestMonth
-        {
-            get { return (int) MonitorJson["contestMonth"]; }
-            set { MonitorJson["contestMonth"] = value; }
-        }
-
-        public string ContestLink
-        {
-            get { return (string) MonitorJson["contestLink"]; }
-            set { MonitorJson["contestLink"] = value; }
-        }
-
-        public int ContestProblemsCount
-        {
-            get { return (int) MonitorJson["contestProblemsCount"]; }
-            set { MonitorJson["contestProblemsCount"] = value; }
-        }
-
         public IList<string> ContestProblemsNames
         {
-            get { return (MonitorJson["contestProblemsNames"]).Select(el => (string) el).ToList(); }
+            get
+            {
+                if (MonitorJson["contestProblemsNames"] != null && MonitorJson["contestProblemsNames"].Type == JTokenType.Array)
+                    return (MonitorJson["contestProblemsNames"]).Select(el => (string) el).ToList();
+                return null;
+            }
             set { MonitorJson["contestProblemsNames"] = new JArray(value); }
         }
 
@@ -79,27 +54,14 @@ namespace UMF
             set { TeamResultJson["teamName"] = value; }
         }
 
-        public string TeamSchool
-        {
-            get { return (string) TeamResultJson["teamSchool"]; }
-            set { TeamResultJson["teamSchool"] = value; }
-        }
-
-        public string TeamSchoolShort
-        {
-            get { return (string) TeamResultJson["teamSchoolShort"]; }
-            set { TeamResultJson["teamSchoolShort"] = value; }
-        }
-
-        public int TeamTotalTime
-        {
-            get { return (int) TeamResultJson["teamTotalTime"]; }
-            set { TeamResultJson["teamTotalTime"] = value; }
-        }
-
         public IList<string> TeamPlayers
         {
-            get { return (TeamResultJson["teamPlayers"]).Select(el => (string) el).ToList(); }
+            get
+            {
+                if (TeamResultJson["teamPlayers"] != null && TeamResultJson["teamPlayers"].Type == JTokenType.Array)
+                    return (TeamResultJson["teamPlayers"]).Select(el => (string) el).ToList();
+                return null;
+            }
             set { TeamResultJson["teamPlayers"] = new JArray(value); }
         }
 
@@ -130,18 +92,6 @@ namespace UMF
         {
             get { return ( (int)ProblemResultJson["problemAccepted"] == 1 ); }
             set { ProblemResultJson["problemAccepted"] = value; }
-        }
-
-        public int ProblemAttempts
-        {
-            get { return (int)ProblemResultJson["problemAttempts"]; }
-            set { ProblemResultJson["problemAttempts"] = value; }
-        }
-
-        public string ProblemTime
-        {
-            get { return (string)ProblemResultJson["problemTime"]; }
-            set { ProblemResultJson["problemTime"] = value; }
         }
     }
 }

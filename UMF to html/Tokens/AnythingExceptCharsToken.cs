@@ -1,10 +1,10 @@
 ﻿namespace UMF.Tokens
 {
-    public class StringWithoutCharsToken : IToken
+    public class AnythingExceptCharsToken : IToken
     {
         private readonly char[] exceptingChars;
 
-        public StringWithoutCharsToken(params char[] exceptingChars)
+        public AnythingExceptCharsToken(params char[] exceptingChars)
         {
             this.exceptingChars = exceptingChars;
         }

@@ -34,7 +34,7 @@ ProblemResult ( PR ) is an object decribing problem solving by some team.
 
 Required fields of PR are:
 	"accepted" - Has team AC? ( number from 0 to 1 )
-	"problemNumber" - Problem number in current contest ( number from 1 to .. )
+	"problemNumber" - Problem number in current contest ( number from 0 to .. )
 
 Optional fields of PR are:
 	"attempts" - Number of attempts ( number )
