@@ -172,7 +172,36 @@ namespace UMF
                                     return null;
                                 return new Variable(string.Join(", ", players));
                             }
-                    }//TODO море
+                    },
+                    {
+                        "teamsCount",
+                        (monitor, context) =>
+                            {
+                                return new Variable(monitor.ContestStanding.Count);
+                            }
+                    },
+                    {
+                        "problemsCount",
+                        (monitor, context) =>
+                            {
+                                var userDefinedCount = monitor.MonitorJson["contestProblemsCount"];
+                                if (userDefinedCount != null && userDefinedCount.Type == JTokenType.Integer)
+                                    return new Variable((int) userDefinedCount);
+                                var userDefinedNames = monitor.MonitorJson["contestProblemsNames"];
+                                if (userDefinedNames != null && userDefinedNames.Type == JTokenType.Array)
+                                    return new Variable(((JArray)userDefinedNames).Count);
+                                int maximumOfProblemNumbers = -1;
+                                foreach (var team in monitor.ContestStanding)
+                                {
+                                    foreach (var problemResult in team.TeamSolving)
+                                    {
+                                        if (problemResult.ProblemNumber > maximumOfProblemNumbers)
+                                            maximumOfProblemNumbers = problemResult.ProblemNumber;
+                                    }
+                                }
+                                return new Variable(maximumOfProblemNumbers + 1);
+                            }
+                    }
                 };
     }
 }
