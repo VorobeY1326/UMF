@@ -26,6 +26,8 @@ namespace UMF.Tokens
                 }
                 result.Append(input[offset++]);
             }
+            if (result.Length == 0)
+                return null;
             return result.ToString();
         }
     }
